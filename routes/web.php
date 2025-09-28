@@ -9,3 +9,5 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('customers', CustomerController::class);
+
+require __DIR__.'/auth.php';
