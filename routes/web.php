@@ -10,4 +10,8 @@ Route::get('/', function () {
 
 Route::resource('customers', CustomerController::class);
 
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
+
 require __DIR__.'/auth.php';

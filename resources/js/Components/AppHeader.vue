@@ -16,6 +16,7 @@ import { Link } from '@inertiajs/vue3';
                 <li><a href="#" class="hover:text-blue-600 transition">Components</a></li>
                 <li><a href="#" class="hover:text-blue-600 transition">Layouts</a></li>
                 <li><a href="#" class="hover:text-blue-600 transition">Sandbox</a></li>
+                <li><Link :href="route('about')" class="hover:text-blue-600 transition">About</Link></li>
             </ul>
 
             <div class="hidden md:flex items-center gap-3">

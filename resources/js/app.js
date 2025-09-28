@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { ZiggyVue } from 'ziggy-js';
+import 'flowbite';
 
 createInertiaApp({
   title: title => `${title} - My App`,
