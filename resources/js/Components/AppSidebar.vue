@@ -32,13 +32,14 @@ const page = usePage();
                 </li>
 
                 <li>
-                    <a 
-                        href="#" 
-                        class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
+                    <Link 
+                        :href="route('posts.index')"
+                        class="flex items-center p-2 rounded-lg group"
+                        :class="page.props.currentRouteName.startsWith('posts.') ? 'text-white bg-gray-700' : 'text-gray-400 hover:text-white hover:bg-gray-700'"
                     >
                         <CubeIcon class="w-5 h-5" />
-                        <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-                    </a>
+                        <span class="ms-3">Posts</span>
+                    </Link>
                 </li>
 
                 <li>

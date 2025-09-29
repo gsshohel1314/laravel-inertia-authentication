@@ -2,6 +2,7 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
@@ -16,6 +17,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     
     Route::resource('users', UserController::class);
+    Route::resource('posts', PostController::class);
 });
 
 require __DIR__.'/auth.php';
