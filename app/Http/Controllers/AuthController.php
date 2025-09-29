@@ -18,16 +18,13 @@ class AuthController extends Controller
 
     public function register(RegisterUserRequest $request) {
         $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
 
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = User::create($data);
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     public function showLoginForm() {
@@ -47,5 +44,13 @@ class AuthController extends Controller
         return redirect()->back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public function logout() {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

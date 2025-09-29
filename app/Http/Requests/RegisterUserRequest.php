@@ -14,16 +14,18 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      => 'required|string|max:255',
-            'email'     => 'required|email|unique:users,email',
-            'password'  => 'required|string|min:8|confirmed',
+            'first_name'    => 'required|string|max:255',
+            'last_name'     => 'required|string|max:255',
+            'email'         => 'required|email|unique:users,email',
+            'password'      => 'required|string|min:8|confirmed',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'name.required'         => 'Name field is required.',
+            'first_name.required'   => 'First name field is required.',
+            'last_name.required'    => 'Last name field is required.',
             'email.required'        => 'Email field is required.',
             'email.email'           => 'Please provide a valid email address.',
             'email.unique'          => 'This email is already registered.',

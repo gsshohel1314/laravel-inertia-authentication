@@ -1,7 +1,7 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { ZiggyVue } from 'ziggy-js';
-import 'flowbite';
+import { initFlowbite } from 'flowbite';
 
 createInertiaApp({
   title: title => `${title} - My App`,
@@ -10,9 +10,10 @@ createInertiaApp({
     return pages[`./Pages/${name}.vue`]
   },
   setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .use(ZiggyVue)
-      .mount(el)
+    const vueApp = createApp({ render: () => h(App, props) })
+    vueApp.use(plugin)
+    vueApp.use(ZiggyVue)
+    vueApp.mixin({ mounted: () => initFlowbite() })
+    vueApp.mount(el)
   },
 })
